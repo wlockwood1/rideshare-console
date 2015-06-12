@@ -1,4 +1,5 @@
 ﻿
+using System;
 namespace TransportProj
 {
     public class Sedan : Car
@@ -41,6 +42,11 @@ namespace TransportProj
                 XPos--;
                 WritePositionToConsole();
             }
+        }
+
+        protected override void WritePositionToConsole()
+        {
+            Console.WriteLine(String.Format("Sedan moved to x - {0} y - {1}", XPos, YPos));
         }
     }
 }
