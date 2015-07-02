@@ -25,8 +25,8 @@ namespace TransportProj
         /// <summary>
         /// Takes one action (move the car one spot or pick up the passenger).
         /// </summary>
-        /// <param name="car"></param>
-        /// <param name="passenger"></param>
+        /// <param name="car">The car to move</param>
+        /// <param name="passenger">The passenger to pick up</param>
         private static void Tick(Car car, Passenger passenger)
         {
             

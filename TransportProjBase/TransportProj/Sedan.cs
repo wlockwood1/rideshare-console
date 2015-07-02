@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+
 namespace TransportProj
 {
     public class Sedan : Car
