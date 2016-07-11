@@ -19,7 +19,7 @@ namespace TransportProj
 
         protected virtual void WritePositionToConsole()
         {
-            Console.WriteLine(String.Format("Car moved to x - {0} y - {1}", XPos, YPos));
+            Console.WriteLine($"Car moved to x - {XPos} y - {YPos}");
         }
 
         public void PickupPassenger(Passenger passenger)
