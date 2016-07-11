@@ -36,8 +36,6 @@ namespace TransportProj
         private static Coordinate Tick(Car car, Passenger passenger)
         {
             // TODO -- REQUIRED: fill this method in.
-
-            // TODO -- REQUIRED: Leave a comment at the end of the method explaining what the time complexity of this method is (using Big O notation).
             return null;
         }
 
