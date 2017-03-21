@@ -8,6 +8,12 @@
         public int XPos { get; set; }
         public int YPos { get; set; }
 
+        public Coordinate(int xPos, int yPos)
+        {
+            XPos = xPos;
+            YPos = yPos;
+        }
+
         public override bool Equals(object obj) 
         {
             if (ReferenceEquals(null, obj)) return false;
