@@ -15,9 +15,9 @@ namespace TransportProj
             var car = city.AddCarToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
             var passenger = city.AddPassengerToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
 
-            Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
-            Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
-            Console.WriteLine("Passenger destination is at coordinate ({0}, {1})", passenger.DestinationXPos, passenger.DestinationYPos);
+            // Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
+            // Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
+            // Console.WriteLine("Passenger destination is at coordinate ({0}, {1})", passenger.DestinationXPos, passenger.DestinationYPos);
             
             // TODO -- REQUIRED: instantiate an appropriate data structure that can be used to store Coordinates. 
             // Ensure the data structure you pick will allow for a time efficient solution.
@@ -95,6 +95,7 @@ namespace TransportProj
             }
 
             // TODO -- REQUIRED: Leave a comment at the end of the method explaining what the time complexity of this method is (using Big O notation).
+            // Time complexity of method is O(1) - Dictionary.Add and Dictionary.ContainsKey methods are both O(1) operations
         }
 
         /// <summary>
@@ -116,6 +117,7 @@ namespace TransportProj
                 Console.WriteLine("({0}, {1}) - {2}", coord.Key.XPos, coord.Key.YPos, coord.Value);
             }
             // TODO -- REQUIRED: Leave a comment at the end of the method explaining what the time complexity of this method is (using Big O notation).
+            // Complexity is O(n), since we are iterating through each of the key/value pairs in the dictionary and printing out the key and value            
         }
     }
 }
