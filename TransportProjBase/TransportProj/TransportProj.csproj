@@ -48,6 +48,7 @@
     <Compile Include="Car.cs" />
     <Compile Include="Passenger.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Racecar.cs" />    
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

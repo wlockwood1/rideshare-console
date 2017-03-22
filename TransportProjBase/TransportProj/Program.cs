@@ -12,12 +12,12 @@ namespace TransportProj
             const int cityWidth = 10;
 
             var city = new City(cityLength, cityWidth);
-            var car = city.AddCarToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
+            var car = city.AddRacecarToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
             var passenger = city.AddPassengerToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
 
-            // Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
-            // Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
-            // Console.WriteLine("Passenger destination is at coordinate ({0}, {1})", passenger.DestinationXPos, passenger.DestinationYPos);
+            Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
+            Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
+            Console.WriteLine("Passenger destination is at coordinate ({0}, {1})", passenger.DestinationXPos, passenger.DestinationYPos);
             
             // TODO -- REQUIRED: instantiate an appropriate data structure that can be used to store Coordinates. 
             // Ensure the data structure you pick will allow for a time efficient solution.
@@ -57,16 +57,16 @@ namespace TransportProj
                 {
                     //Check if we are east or west of destination
                     if (carXPos > carDestXPos) {
-                        car.MoveLeft();
+                        car.MoveLeft(carDestXPos);
                     } else {
-                        car.MoveRight();
+                        car.MoveRight(carDestXPos);
                     }
                 } else {
                     //We are at same x position, see if we are north or south of passenger
                     if (carYPos > carDestYPos)  {
-                        car.MoveDown();
+                        car.MoveDown(carDestYPos);
                     } else {
-                        car.MoveUp();
+                        car.MoveUp(carDestYPos);
                     }
                 }
             }
@@ -87,9 +87,11 @@ namespace TransportProj
             //Check if coordinate is in there already
             // if {
             if (visitedCoordinates.ContainsKey(coordinate)) {
+                //Increment number of times we've visited coordinate if it's already in dictionary
                 visitedCoordinates[coordinate]++;
                 // Console.WriteLine ("Have visited ({0}, {1}) a total of {2} times", coordinate.XPos, coordinate.YPos, visitedCoordinates[coordinate]);
             } else {
+                //Add coordinate with value of 1 to indicate we've visited once
                 // Console.WriteLine ("Adding ({0}, {1}) to visited coordinates", coordinate.XPos, coordinate.YPos);
                 visitedCoordinates.Add(coordinate, 1);
             }
@@ -112,6 +114,7 @@ namespace TransportProj
         {
             // TODO -- REQUIRED: fill this method in.
             Console.WriteLine("Visited coordinates: ");
+            //Print each coordinate and number of times we've visited it
             foreach (KeyValuePair<Coordinate, int> coord in visitedCoordinates)
             {
                 Console.WriteLine("({0}, {1}) - {2}", coord.Key.XPos, coord.Key.YPos, coord.Value);

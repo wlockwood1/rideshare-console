@@ -18,6 +18,13 @@ namespace TransportProj
 
             return car;
         }
+        
+        public Car AddRacecarToCity(int xPos, int yPos)
+        {
+            Racecar car = new Racecar(xPos, yPos, this, null);
+
+            return car;
+        }
 
         public Passenger AddPassengerToCity(int startXPos, int startYPos, int destXPos, int destYPos)
         {

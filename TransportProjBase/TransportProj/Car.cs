@@ -27,12 +27,12 @@ namespace TransportProj
             Passenger = passenger;
         }
 
-        public abstract void MoveUp();
+        public abstract void MoveUp(int yPos);
 
-        public abstract void MoveDown();
+        public abstract void MoveDown(int yPos);
 
-        public abstract void MoveRight();
+        public abstract void MoveRight(int xPos);
 
-        public abstract void MoveLeft();
+        public abstract void MoveLeft(int xPos);
     }
 }

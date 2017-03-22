@@ -8,7 +8,7 @@ namespace TransportProj
         {
         }
 
-        public override void MoveUp()
+        public override void MoveUp(int carYPos)
         {
             if (YPos < City.YMax)
             {
@@ -17,7 +17,7 @@ namespace TransportProj
             }
         }
 
-        public override void MoveDown()
+        public override void MoveDown(int carYPos)
         {
             if (YPos > 0)
             {
@@ -26,7 +26,7 @@ namespace TransportProj
             }
         }
 
-        public override void MoveRight()
+        public override void MoveRight(int carXPos)
         {
             if (XPos < City.XMax)
             {
@@ -35,7 +35,7 @@ namespace TransportProj
             }
         }
 
-        public override void MoveLeft()
+        public override void MoveLeft(int carXPos)
         {
             if (XPos > 0)
             {
