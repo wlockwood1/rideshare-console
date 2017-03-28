@@ -2,9 +2,8 @@
 
 namespace TransportProj
 {
-    public class Racecar : IRaceCar
+    public class Racecar : IRacecar
     {
-
 		public Racecar(int xPos, int yPos, City city, Passenger passenger)
 		{
 			XPos = xPos;

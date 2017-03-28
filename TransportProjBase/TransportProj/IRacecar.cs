@@ -1,7 +1,7 @@
 ﻿using System;
 namespace TransportProj
 {
-	public abstract class IRaceCar : ICar
+	public abstract class IRacecar : ICar
 	{
 		public override void MoveUp(int destYPos)
 		{

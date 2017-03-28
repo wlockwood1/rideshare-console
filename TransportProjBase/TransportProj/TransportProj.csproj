@@ -63,7 +63,7 @@
     <Compile Include="Racecar.cs" />    
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ICarFactory.cs" />
-    <Compile Include="IRaceCar.cs" />
+    <Compile Include="IRacecar.cs" />
     <Compile Include="ISedan.cs" />
     <Compile Include="SedanFactory.cs" />
     <Compile Include="RacecarFactory.cs" />
