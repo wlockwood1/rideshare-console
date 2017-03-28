@@ -1,19 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Practices.Unity;
 
 namespace TransportProj
 {
     internal class Program
     {
+		private static UnityContainer _container;
         private static void Main(string[] args)
         {
-            var rand = new Random();
+			_container = new UnityContainer();
+
+			Console.WriteLine("Please enter which type of car you'd like to use (enter sedan or racecar):");
+			string carType = Console.ReadLine();
+
+			//Register factory based on user input
+			_container.RegisterType<ICarFactory, SedanFactory>("sedan");
+			_container.RegisterType<ICarFactory, RacecarFactory>("racecar");
+
+			//Register default factory
+			_container.RegisterType<ICarFactory, SedanFactory>();
+
+
+           	var rand = new Random();
             const int cityLength = 10;
             const int cityWidth = 10;
 
             var city = new City(cityLength, cityWidth);
-            var car = city.AddRacecarToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
             var passenger = city.AddPassengerToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
+
+			var factory = GetFactory(carType);
+			ICar car = factory.CreateCar(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), city, null);
 
             Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
             Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
@@ -33,13 +50,27 @@ namespace TransportProj
             PrintVisitedCoordinates(visitedCoordinates);
         }
 
+		/// <summary>
+		/// Gets the car factory to use based on what type of car user requested
+		/// </summary>
+		/// <param name="carType">The car type requested by user</param>
+		/// <returns>A container with the factory to use based on car type</returns>
+		private static ICarFactory GetFactory(string carType)
+		{
+			if (_container.IsRegistered<ICarFactory>(carType))
+			{
+				return _container.Resolve<ICarFactory>(carType);
+			}
+			return _container.Resolve<ICarFactory>();
+		}
+
         /// <summary>
         /// Takes one action (move the car one spot or pick up the passenger).
         /// </summary>
         /// <param name="car">The car to move</param>
         /// <param name="passenger">The passenger to pick up</param>
         /// <returns>A Coordinate representing the location of the Car after the move was made</returns>
-        private static Coordinate Tick(Car car, Passenger passenger)
+        private static Coordinate Tick(ICar car, Passenger passenger)
         {
             int carXPos = car.XPos;
             int carYPos = car.YPos;

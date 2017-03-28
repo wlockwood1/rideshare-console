@@ -12,19 +12,6 @@ namespace TransportProj
             YMax = yMax;
         }
 
-        public Car AddCarToCity(int xPos, int yPos)
-        {
-            Sedan car = new Sedan(xPos, yPos, this, null);
-
-            return car;
-        }
-        
-        public Car AddRacecarToCity(int xPos, int yPos)
-        {
-            Racecar car = new Racecar(xPos, yPos, this, null);
-
-            return car;
-        }
 
         public Passenger AddPassengerToCity(int startXPos, int startYPos, int destXPos, int destYPos)
         {
