@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{3A66DBD2-5B93-41AA-8ACB-381C2FE11274}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TransportProj/Car.cs">
+    <Files>
+      <File FileName="TransportProj/ICarType.cs" Line="11" Column="2" />
+      <File FileName="TransportProj/FactoryCarType.cs" Line="9" Column="36" />
+      <File FileName="TransportProj/Racecar.cs" Line="15" Column="3" />
+      <File FileName="TransportProj/Passenger.cs" Line="23" Column="31" />
+      <File FileName="TransportProj/Sedan.cs" Line="14" Column="3" />
+      <File FileName="TransportProj/ICar.cs" Line="22" Column="6" />
+      <File FileName="TransportProj/Program.cs" Line="18" Column="59" />
+      <File FileName="TransportProj/ICarFactory.cs" Line="6" Column="86" />
+      <File FileName="TransportProj/IRaceCar.cs" Line="49" Column="1" />
+      <File FileName="TransportProj/ISedan.cs" Line="35" Column="4" />
+      <File FileName="TransportProj/SedanFactory.cs" Line="9" Column="4" />
+      <File FileName="TransportProj/RacecarFactory.cs" Line="12" Column="1" />
+      <File FileName="TransportProj/City.cs" Line="25" Column="1" />
+      <File FileName="TransportProj/CityPosition.cs" Line="12" Column="1" />
+      <File FileName="TransportProj/Car.cs" Line="4" Column="18" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.TransportProj PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

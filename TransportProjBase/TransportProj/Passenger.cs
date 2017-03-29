@@ -8,7 +8,7 @@ namespace TransportProj
         public int StartingYPos { get; private set; }
         public int DestinationXPos { get; private set; }
         public int DestinationYPos { get; private set; }
-        public Car Car { get; set; }
+        public ICar Car { get; set; }
         public City City { get; private set; }
 
         public Passenger(int startXPos, int startYPos, int destXPos, int destYPos, City city)
@@ -20,7 +20,7 @@ namespace TransportProj
             City = city;
         }
 
-        public void GetInCar(Car car)
+        public void GetInCar(ICar car)
         {
             Car = car;
             car.PickupPassenger(this);
