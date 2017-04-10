@@ -15,9 +15,6 @@ namespace TransportProj
 			_container.RegisterType<ICarFactory, SedanFactory>("sedan");
 			_container.RegisterType<ICarFactory, RacecarFactory>("racecar");
 
-			//Register default factory
-			_container.RegisterType<ICarFactory, SedanFactory>();
-
            	var rand = new Random();
             const int cityLength = 10;
             const int cityWidth = 10;
@@ -25,14 +22,21 @@ namespace TransportProj
             var city = new City(cityLength, cityWidth);
             var passenger = city.AddPassengerToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
 
+
 			//Ask user what type of car they want
 			Console.WriteLine("Please enter which type of car you'd like to use (enter sedan or racecar):");
 			string carType = Console.ReadLine().Trim().ToLower();
 
+			//Keep prompting user until they enter a valid car
+			while (!isValidCar(carType)) {
+				Console.WriteLine("Not a valid car type. Please enter sedan or racecar.");
+				carType = Console.ReadLine().Trim().ToLower();				
+			}
 			//Get factory and create car based on what user asked for
 			var factory = GetFactory(carType);
 			ICar car = factory.CreateCar(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), city, null);
 
+			//Check if valid car
             //Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
             //Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
             //Console.WriteLine("Passenger destination is at coordinate ({0}, {1})", passenger.DestinationXPos, passenger.DestinationYPos);
@@ -56,12 +60,15 @@ namespace TransportProj
 		/// </summary>
 		/// <param name="carType">The car type requested by user</param>
 		/// <returns>Concrete instance of the ICarFactory registered based on the user input</returns>
+
+		private static bool isValidCar(string carType)
+		{
+			return _container.IsRegistered<ICarFactory>(carType);
+		}
+
+
 		private static ICarFactory GetFactory(string carType)
 		{
-			if (_container.IsRegistered<ICarFactory>(carType))
-			{
-				return _container.Resolve<ICarFactory>(carType);
-			}
 			return _container.Resolve<ICarFactory>();
 		}
 
