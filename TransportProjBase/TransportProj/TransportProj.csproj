@@ -57,14 +57,12 @@
     <Compile Include="Sedan.cs" />
     <Compile Include="City.cs" />
     <Compile Include="CityPosition.cs" />
-    <Compile Include="ICar.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="Passenger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Racecar.cs" />    
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ICarFactory.cs" />
-    <Compile Include="IRacecar.cs" />
-    <Compile Include="ISedan.cs" />
     <Compile Include="SedanFactory.cs" />
     <Compile Include="RacecarFactory.cs" />
   </ItemGroup>

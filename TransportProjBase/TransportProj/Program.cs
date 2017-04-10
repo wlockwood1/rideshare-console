@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Practices.Unity;
 
@@ -16,8 +16,8 @@ namespace TransportProj
 			_container.RegisterType<ICarFactory, RacecarFactory>("racecar");
 
            	var rand = new Random();
-            const int cityLength = 10;
-            const int cityWidth = 10;
+            const int cityLength = 20;
+            const int cityWidth = 15;
 
             var city = new City(cityLength, cityWidth);
             var passenger = city.AddPassengerToCity(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), rand.Next(cityLength - 1), rand.Next(cityWidth - 1));
@@ -34,9 +34,8 @@ namespace TransportProj
 			}
 			//Get factory and create car based on what user asked for
 			var factory = GetFactory(carType);
-			ICar car = factory.CreateCar(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), city, null);
+			Car car = factory.CreateCar(rand.Next(cityLength - 1), rand.Next(cityWidth - 1), city, null);
 
-			//Check if valid car
             //Console.WriteLine("Car is starting at coordinate ({0}, {1})", car.XPos, car.YPos);            
             //Console.WriteLine("Passenger pickup is at coordinate ({0}, {1})", passenger.StartingXPos, passenger.StartingYPos);
             //Console.WriteLine("Passenger destination is at coordinate ({0}, {1})", passenger.DestinationXPos, passenger.DestinationYPos);
@@ -56,20 +55,23 @@ namespace TransportProj
         }
 
 		/// <summary>
-		/// Gets the car factory to use based on what type of car user requested
+		/// Checks if car type user entered is valid
 		/// </summary>
 		/// <param name="carType">The car type requested by user</param>
-		/// <returns>Concrete instance of the ICarFactory registered based on the user input</returns>
-
+		/// <returns>Boolean based on if car type is registered based on user input</returns>
 		private static bool isValidCar(string carType)
 		{
 			return _container.IsRegistered<ICarFactory>(carType);
 		}
 
-
+		/// <summary>
+		/// Gets the car factory to use based on what type of car user requested
+		/// </summary>
+		/// <param name="carType">The car type requested by user</param>
+		/// <returns>Concrete instance of the ICarFactory registered based on the user input</returns>
 		private static ICarFactory GetFactory(string carType)
 		{
-			return _container.Resolve<ICarFactory>();
+			return _container.Resolve<ICarFactory>(carType);
 		}
 
         /// <summary>
@@ -78,7 +80,7 @@ namespace TransportProj
         /// <param name="car">The car to move</param>
         /// <param name="passenger">The passenger to pick up</param>
         /// <returns>A Coordinate representing the location of the Car after the move was made</returns>
-        private static Coordinate Tick(ICar car, Passenger passenger)
+        private static Coordinate Tick(Car car, Passenger passenger)
         {
             int carXPos = car.XPos;
             int carYPos = car.YPos;

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 namespace TransportProj
 {
-	public abstract class ICarFactory
+	public interface ICarFactory
 	{
-		public abstract ICar CreateCar(int xPos, int yPos, City city, Passenger passenger);
+		Car CreateCar(int xPos, int yPos, City city, Passenger passenger);
 	}
 }
